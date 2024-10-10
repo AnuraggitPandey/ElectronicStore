@@ -5,10 +5,10 @@
         <div class="cartindi"> 
             <div class="cartinfo cartadj">
                 <div>{{forloop.counter}}</div>
-                <div class="cartimg cartadj"><img style="width: 100%;min-width:80px;;" src="/media/{{cartitems.pizza.image}}" alt=""></div>
-                <div class="cartadj">{{cartitems.pizza.pizza_name}}</div>
-                <div class="cartadj">{{cartitems.pizza.price}}</div>
-                <div class="cartadj">{{cartitems.pizza.category.category_name}}</div>
+                <div class="cartimg cartadj"><img style="width: 100%;min-width:80px;;" src="/media/{{cartitems.product.image}}" alt=""></div>
+                <div class="cartadj">{{cartitems.product.product_name}}</div>
+                <div class="cartadj">{{cartitems.product.price}}</div>
+                <div class="cartadj">{{cartitems.product.category.category_name}}</div>
                 <div class="cartadj"><a href="{% url 'remove_cart_items' cartitems.uid %}" class="btn btn-danger">Remove</a></div>
             </div>
         </div>

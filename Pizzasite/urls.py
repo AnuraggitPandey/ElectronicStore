@@ -12,7 +12,7 @@ urlpatterns = [
     path('',include('pizza_bay.urls')),
     path('login',login_page,name='login'),
     path('register',register_page,name='register'),
-    path('add-cart/<pizza_uid>',add_cart,name='add_cart'),
+    path('add-cart/<product_uid>',add_cart,name='add_cart'),
     path('register',include('pizza_bay.urls')),
     path('cart',cart,name='cart'),
     path('details',address_ord,name='details'),

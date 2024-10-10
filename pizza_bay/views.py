@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 def home(request):
-    pizzas=Pizza.objects.all()
+    pizzas=Product.objects.all()
     context = {"pizzas":pizzas}
     return render(request,'index.html',context)
 def about(request):
@@ -72,15 +72,15 @@ def register_page(request):
     return render(request,'register.html')
 
 @login_required(login_url='login')
-def add_cart(request,pizza_uid):
+def add_cart(request,product_uid):
     if request.user.is_authenticated:
         user=request.user
-        pizza_obj=Pizza.objects.get(uid=pizza_uid)
+        product_obj=Product.objects.get(uid=product_uid)
         cart , _ =Cart.objects.get_or_create(user=user, is_paid=False)
 
         cart_items=CartItems.objects.create(
             cart=cart,
-            pizza=pizza_obj
+            product=product_obj
         )
         return redirect('/')
     return redirect('login')
@@ -125,7 +125,7 @@ def address_ord(request):
                 city=City,
                 state=State,
                 zip=Zip,
-                payment_id=payment_id)
+                payment_id="sd")
             cart=Cart.objects.get(user=request.user,is_paid=False)
             cart.is_paid=True
             cart.save()

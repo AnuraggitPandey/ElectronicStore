@@ -12,26 +12,32 @@ class Basemodel(models.Model):
     class Meta:
         abstract=True;
 
-class PizzaCategory(Basemodel):
+class ProductCategory(Basemodel):
     category_name=models.CharField(max_length=100)
 
-class Pizza(Basemodel):
-    category=models.ForeignKey(PizzaCategory,on_delete=models.CASCADE,related_name="pizzas") 
-    pizza_name=models.CharField(max_length=100)
+    def __str__(self) -> str:
+        return self.category_name
+
+class Product(Basemodel):
+    category=models.ForeignKey(ProductCategory,on_delete=models.CASCADE,related_name="products") 
+    product_name=models.CharField(max_length=100)
     price=models.IntegerField(default=300)
-    image=models.ImageField(upload_to='pizza')
+    image=models.ImageField(upload_to='product')
+
+    def __str__(self) -> str:
+        return self.product_name
 
 class Cart(Basemodel):
     user=models.ForeignKey(User,null=True,blank=True,on_delete=models.SET_NULL,related_name="carts")
     is_paid=models.BooleanField(default=False)
 
     def get_cart_total(self):
-        return CartItems.objects.filter(cart=self).aggregate(Sum('pizza__price'))['pizza__price__sum']
+        return CartItems.objects.filter(cart=self).aggregate(Sum('product__price'))['product__price__sum']
 
 
 class CartItems(Basemodel):
     cart=models.ForeignKey(Cart,on_delete=models.CASCADE,related_name="cart_items")
-    pizza=models.ForeignKey(Pizza,on_delete=models.CASCADE)
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
 
 class details(Basemodel):
      user=models.ForeignKey(User,null=True,blank=True,on_delete=models.SET_NULL,related_name="details")
