@@ -1,5 +1,5 @@
 """
-WSGI config for Pizzasite project.
+WSGI config for Electronsite project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,7 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Pizzasite.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Electronsite.settings')
 
 application = get_wsgi_application()
 app=application

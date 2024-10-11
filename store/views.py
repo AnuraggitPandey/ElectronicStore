@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 # from locust import User
-from pizza_bay.models import *
+from store.models import *
 from django.contrib import messages
 from django.contrib.auth import login,authenticate,logout
 from django.http import JsonResponse
