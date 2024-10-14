@@ -3,7 +3,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "Pizzasite/wsgi.py",
+        "src": "Electronsite/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
       },
@@ -22,7 +22,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "Pizzasite/wsgi.py"
+        "dest": "Electronsite/wsgi.py"
       }
     ]
   }
