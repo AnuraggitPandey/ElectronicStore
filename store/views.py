@@ -10,8 +10,8 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 def home(request):
-    pizzas=Product.objects.all()
-    context = {"pizzas":pizzas}
+    products=Product.objects.all()
+    context = {"products":products}
     return render(request,'index.html',context)
 def about(request):
     return render(request,'about.html')

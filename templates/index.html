@@ -18,20 +18,20 @@
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" id="nxtbtn">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>
     <H1 class="heading my-3">Choose From our Perfect Collections.</H1>
     <div class="content">
-{% for pizza in pizzas %}
+{% for product in products %}
         <div class="card">
-            <img src="/media/{{pizza.image}}" class="card-img-top" alt="...">
+            <img src="/media/{{product.image}}" class="card-img-top" alt="...">
             <div class="card-body">
-          <h5 class="card-title">{{pizza.product_name}}</h5>
-          <p class="card-text cardpad">Price-{{pizza.price}} | Category-{{pizza.category.category_name}}</p>
-          <a href="{% url 'add_cart' pizza.uid %}" class="btn btn-primary ordernow">Add to cart</a>
+          <h5 class="card-title">{{product.product_name}}</h5>
+          <p class="card-text cardpad">Price-{{product.price}} | Category-{{product.category.category_name}}</p>
+          <a href="{% url 'add_cart' product.uid %}" class="btn btn-primary ordernow">Add to cart</a>
         </div>
       </div>
       <a href="cart">
@@ -43,5 +43,9 @@
     </div>
 </div>
     
-
+<script>
+  setTimeout(() => {
+    document.getElementById('nxtbtn').click();
+  }, 3000);
+</script>
 {% endblock body %}
