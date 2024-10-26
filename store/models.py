@@ -19,7 +19,7 @@ class ProductCategory(Basemodel):
         return self.category_name
     
     class Meta:
-        db_table = 'pizza_bay_productcategory'
+        db_table = 'productcategory'
 
 class Product(Basemodel):
     category=models.ForeignKey(ProductCategory,on_delete=models.CASCADE,related_name="products") 
@@ -28,7 +28,7 @@ class Product(Basemodel):
     image=models.ImageField(upload_to='product')
 
     class Meta:
-        db_table = 'pizza_bay_product'  # Use the old table name
+        db_table = 'product'  # Use the old table name
 
     def __str__(self) -> str:
         return self.product_name
@@ -41,7 +41,7 @@ class Cart(Basemodel):
         return CartItems.objects.filter(cart=self).aggregate(Sum('product__price'))['product__price__sum']
     
     class Meta:
-        db_table = 'pizza_bay_cart'
+        db_table = 'cart'
 
 
 class CartItems(Basemodel):
@@ -49,7 +49,7 @@ class CartItems(Basemodel):
     product=models.ForeignKey(Product,on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'pizza_bay_cartitems'
+        db_table = 'cartitems'
 
 class details(Basemodel):
      user=models.ForeignKey(User,null=True,blank=True,on_delete=models.SET_NULL,related_name="details")
@@ -62,10 +62,10 @@ class details(Basemodel):
      payment_id=models.CharField(max_length=100,default="Cash on delivery.",null=False,blank=False)
 
      class Meta:
-        db_table = 'pizza_bay_details'
+        db_table = 'details'
     
 class newsletter(models.Model):
     email=models.EmailField(max_length=100)
 
     class Meta:
-        db_table = 'pizza_bay_newsletter'
+        db_table = 'newsletter'
